@@ -111,13 +111,13 @@ green "======================="
 yellow "请输入绑定到本VPS的域名"
 green "======================="
 read your_domain
-real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
-local_addr=`curl ipv4.icanhazip.com`
-if [ $real_addr == $local_addr ] ; then
-	green "=========================================="
-	green "       域名解析正常，开始安装trojan"
-	green "=========================================="
-	sleep 1s
+#real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
+#local_addr=`curl ipv4.icanhazip.com`
+#if [ $real_addr == $local_addr ] ; then
+#	green "=========================================="
+#	green "       域名解析正常，开始安装trojan"
+#	green "=========================================="
+#	sleep 1s
 cat > /etc/nginx/nginx.conf <<-EOF
 user  root;
 worker_processes  1;
@@ -292,12 +292,12 @@ EOF
 	red "================================"
 	fi
 	
-else
-	red "================================"
-	red "域名解析地址与本VPS IP地址不一致"
-	red "本次安装失败，请确保域名解析正常"
-	red "================================"
-fi
+#else
+#	red "================================"
+#	red "域名解析地址与本VPS IP地址不一致"
+#	red "本次安装失败，请确保域名解析正常"
+#	red "================================"
+#fi
 }
 
 function remove_trojan(){
